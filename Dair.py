@@ -3,9 +3,26 @@ import platform
 import socket
 import subprocess
 import sys
+from colorama import init, Fore, Style
+
+
+init()
+
+def dair_logo_buyuk():
+    logo = """
+    ██████╗  █████╗ ██╗██████╗ 
+    ██╔══██╗██╔══██╗██║██╔══██╗
+    ██║  ██║███████║██║██████╔╝
+    ██║  ██║██╔══██║██║██╔══██╗
+    ██████╔╝██║  ██║██║██║  ██║
+    ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝
+    """
+    print(Fore.YELLOW + Style.BRIGHT + logo + Style.RESET_ALL)
+    print(Fore.YELLOW + " " * 15 + "Dijital Arşiv ve İşlem Sistemi" + Style.RESET_ALL)
+    print(Fore.RED + "═" * 65 + Style.RESET_ALL)
 
 def ping_target(target):
-    # İşletim sistemi belirleme
+    # İşletim sisteminin belirlenmesi
     param = '-n' if platform.system().lower() == 'windows' else '-c'
     command = ['ping', param, '1', target]
     
@@ -24,6 +41,9 @@ def scan_tcp_ports(target, ports):
     return open_ports
 
 def main():
+    
+    dair_logo_buyuk()
+    
     target = input("Tarama yapmak istediğiniz IP adresini girin: ")
     
     print(f"{target} için ICMP kontrolü yapılıyor...")
